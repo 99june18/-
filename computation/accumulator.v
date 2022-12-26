@@ -8,7 +8,7 @@ module accumulator(clk, rst, acc_in, acc_out, count_9);
     output [7 : 0] acc_out; //acc 결과값
     reg [7 : 0] acc, acc_n; //값 임시 저장
     output count_9; // 9번 누산한 값이 C하나이다.
-    reg count_9;
+    reg cnt;
 
     reg [3 : 0] count, count_n; //9까지 세야함
 
@@ -45,15 +45,16 @@ module accumulator(clk, rst, acc_in, acc_out, count_9);
 
     always @(posedge clk) begin
         if (count_n == 4'b1001) begin
-           count_9 <= 1;
+           cnt <= 1;
         end
         else begin
-            count_9 <= 0;
+            cnt <= 0;
         end
     end
 
-    eight_bit_full_adder_module eight_bit_full_adder(.a(acc_n), .b(acc_in), .cin(1'b0), .sum(acc_w));
+    eight_bit_full_adder_module eight_bit_full_adder(.a(acc_n), .b(acc_in), .cin(1'b0), .sum(acc_w), .cout());
 
 
     assign acc_out = acc;
+    assign count_9 = cnt;
 endmodule
