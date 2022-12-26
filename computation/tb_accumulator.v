@@ -8,8 +8,9 @@ module tb_accumulater;
 	reg [7:0] ACC_IN;
  	
     wire [7:0] ACC_OUT;
+	wire COUNT_9;
 
-    accumulator accumulator_1(.clk(CLK), .rst(RST), .acc_in(ACC_IN), .acc_out(ACC_OUT));
+    accumulator accumulator_1(.clk(CLK), .rst(RST), .acc_in(ACC_IN), .acc_out(ACC_OUT), .count_9(COUNT_9));
 
 	initial
 	begin
