@@ -6,7 +6,7 @@ module eight_bit_multiplier_module (a, b, out);
 
     output [7:0] out;
 
-    reg [7:0] shift_a1, shift_a2, shift_a3, shift_a4, shift_a5, shift_a6, shift_a7;
+    wire [7:0] shift_a1, shift_a2, shift_a3, shift_a4, shift_a5, shift_a6, shift_a7;
     wire [7:0] out0, out1, out2, out3, out4, out5, out6, out7;
     wire [7:0] add0, add1, add2, add3, add4, add5;
 
@@ -28,18 +28,18 @@ module eight_bit_multiplier_module (a, b, out);
     assign out7 = (b[7] == 0) ? (8'b0) : (shift_a7);
 
     eight_bit_full_adder_module INST_eight_bit_full_adder_module_1
-    (.a(a)   , .b(shift_a1), .cin(1'b0), .sum(add0), .cout());
+    (.a(out0), .b(out1), .cin(1'b0), .sum(add0), .cout());
     eight_bit_full_adder_module INST_eight_bit_full_adder_module_2
-    (.a(add0), .b(shift_a2), .cin(1'b0), .sum(add1), .cout());
+    (.a(add0), .b(out2), .cin(1'b0), .sum(add1), .cout());
     eight_bit_full_adder_module INST_eight_bit_full_adder_module_3
-    (.a(add1), .b(shift_a3), .cin(1'b0), .sum(add2), .cout());
+    (.a(add1), .b(out3), .cin(1'b0), .sum(add2), .cout());
     eight_bit_full_adder_module INST_eight_bit_full_adder_module_4
-    (.a(add2), .b(shift_a4), .cin(1'b0), .sum(add3), .cout());
+    (.a(add2), .b(out4), .cin(1'b0), .sum(add3), .cout());
     eight_bit_full_adder_module INST_eight_bit_full_adder_module_5
-    (.a(add3), .b(shift_a5), .cin(1'b0), .sum(add4), .cout());
+    (.a(add3), .b(out5), .cin(1'b0), .sum(add4), .cout());
     eight_bit_full_adder_module INST_eight_bit_full_adder_module_6
-    (.a(add4), .b(shift_a6), .cin(1'b0), .sum(add5), .cout());
+    (.a(add4), .b(out6), .cin(1'b0), .sum(add5), .cout());
     eight_bit_full_adder_module INST_eight_bit_full_adder_module_7
-    (.a(add5), .b(shift_a7), .cin(1'b0), .sum(out), .cout());
+    (.a(add5), .b(out7), .cin(1'b0), .sum(out ),  .cout());
 
 endmodule
