@@ -36,7 +36,7 @@ module accumulator(clk, rst, acc_vaild, acc_in, acc_out, count_9);
             end
             else begin
                 acc_n = acc_w;
-                count_n <= count + 1;
+                count_n = count + 1;
                 cnt_9 = 1'b0;
             end
         end
