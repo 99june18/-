@@ -40,20 +40,21 @@ activate_done,a11,a12,a13,a14,a21,a22,a23,a24,a31,a32,a33,a34,a41,a42,a43,a44,b1
             storage_filter[3] <= 8'b0; storage_filter[4] <= 8'b0; storage_filter[5] <= 8'b0;
             storage_filter[6] <= 8'b0; storage_filter[7] <= 8'b0; storage_filter[8] <= 8'b0;
             activate_done_w <= 1'b0;
-        end else if (activate == 1'b1) 
-        begin
-            storage_data[0] <= a11_in; storage_data[1] <= a12_in; storage_data[2] <= a13_in; storage_data[3] <= a14_in;
-            storage_data[4] <= a21_in; storage_data[5] <= a22_in; storage_data[6] <= a23_in; storage_data[7] <= a24_in;
-            storage_data[8] <= a31_in; storage_data[9] <= a32_in; storage_data[10] <= a33_in; storage_data[11] <= a34_in;
-            storage_data[12] <= a41_in; storage_data[13] <= a42_in; storage_data[14] <= a43_in; storage_data[15] <= a44_in;
-            
-            storage_filter[0] <= b11_in; storage_filter[1] <= b12_in; storage_filter[2] <= b13_in;
-            storage_filter[3] <= b21_in; storage_filter[4] <= b22_in; storage_filter[5] <= b23_in;
-            storage_filter[6] <= b31_in; storage_filter[7] <= b32_in; storage_filter[8] <= b33_in;
-            activate_done_w <= 1'b1;
-        end else
-        begin
-            activate_done_w <= 1'b0;
+        end else begin
+            if (activate == 1'b1) 
+            begin
+                storage_data[0] <= a11_in; storage_data[1] <= a12_in; storage_data[2] <= a13_in; storage_data[3] <= a14_in;
+                storage_data[4] <= a21_in; storage_data[5] <= a22_in; storage_data[6] <= a23_in; storage_data[7] <= a24_in;
+                storage_data[8] <= a31_in; storage_data[9] <= a32_in; storage_data[10] <= a33_in; storage_data[11] <= a34_in;
+                storage_data[12] <= a41_in; storage_data[13] <= a42_in; storage_data[14] <= a43_in; storage_data[15] <= a44_in;
+                
+                storage_filter[0] <= b11_in; storage_filter[1] <= b12_in; storage_filter[2] <= b13_in;
+                storage_filter[3] <= b21_in; storage_filter[4] <= b22_in; storage_filter[5] <= b23_in;
+                storage_filter[6] <= b31_in; storage_filter[7] <= b32_in; storage_filter[8] <= b33_in;
+                activate_done_w <= 1'b1;
+            end else begin
+                activate_done_w <= 1'b0;
+            end
         end
     end
 
