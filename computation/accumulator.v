@@ -1,9 +1,10 @@
-module accumulator(clk, rst, acc_in, acc_out, count_9);
+module accumulator(clk, rst, acc_vaild, acc_in, acc_out, count_9);
 
     input clk;
     input rst;
 
     input [7 : 0] acc_in; //8bit 곱셈기에서 나온 값
+    input acc_vaild;
 
     output [7 : 0] acc_out; //acc 결과값
     reg [7 : 0] acc, acc_n; //값 임시 저장
@@ -26,15 +27,21 @@ module accumulator(clk, rst, acc_in, acc_out, count_9);
     end
 
     always @(*) begin
-        if (count == 4'b1001) begin
-            cnt = 1'b1;
-            count_n = 4'b1;
-            acc_n = acc_in;
+        if (acc_vaild == 1'b1) begin
+            if (count == 4'b1001) begin
+                cnt = 1'b1;
+                count_n = 4'b1;
+                acc_n = acc_in;
+            end
+            else begin
+                cnt = 1'b0;
+                acc_n = acc_w;
+                count_n <= count +1;
+            end
         end
         else begin
-            cnt = 1'b0;
-            acc_n = acc_w;
-            count_n <= count +1;
+            acc_n = 0;
+            count_n = 0;
         end
     end
 
