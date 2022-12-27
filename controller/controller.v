@@ -1,6 +1,6 @@
 module controller(clk, reset, run, 
-done_capture, done_send, done_PE, done_3x3_SA , done_2x2_SA, done_display, 
-state_idle, state_capture, state_send, state_PE, state_3x3_SA, state_2x2_SA, state_display);
+done_capture, done_send, done_PE, done_SA_3x3 , done_SA_2x2, done_display, 
+state_idle, state_capture, state_send, state_PE, state_SA_3x3, state_SA_2x2, state_display);
 
 	input clk; 
 	input reset;
@@ -8,16 +8,16 @@ state_idle, state_capture, state_send, state_PE, state_3x3_SA, state_2x2_SA, sta
 	input done_capture;
 	input done_send;
 	input done_PE;
-	input done_3x3_SA;
-	input done_2x2_SA;
+	input done_SA_3x3;
+	input done_SA_2x2;
 	input done_display;
 	
 	output state_idle;
 	output state_capture;
 	output state_send;
 	output state_PE;
-	output state_3x3_SA;
-	output state_2x2_SA;
+	output state_SA_3x3;
+	output state_SA_2x2;
 	output state_display;
 
 	reg	[2:0] state, n_state;
