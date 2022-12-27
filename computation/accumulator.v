@@ -25,35 +25,20 @@ module accumulator(clk, rst, acc_in, acc_out, count_9);
         end
     end
 
-    always @(posedge clk) begin
-        if (rst == 1'b1) begin
-            acc_n <= 8'd0;
-            count_n <= 4'b0;
+    always @(*) begin
+        if (count == 4'b1001) begin
+            cnt = 1'b1;
+            count_n = 4'b1;
+            acc_n = acc_in;
         end
         else begin
-            acc_n <= acc_w;
-            count_n <= count_n +1;
+            cnt = 1'b0;
+            acc_n = acc_w;
+            count_n <= count +1;
         end
     end
 
-    always @(posedge clk) begin
-        if (count_n == 4'b1001) begin
-            count_n <= 4'b1;
-            acc_n <= acc_in;
-        end
-    end
-
-    always @(posedge clk) begin
-        if (count_n == 4'b1001) begin
-           cnt <= 1;
-        end
-        else begin
-            cnt <= 0;
-        end
-    end
-
-    eight_bit_full_adder_module eight_bit_full_adder(.a(acc_n), .b(acc_in), .cin(1'b0), .sum(acc_w), .cout());
-
+    eight_bit_full_adder_module eight_bit_full_adder(.a(acc), .b(acc_in), .cin(1'b0), .sum(acc_w), .cout());
 
     assign acc_out = acc;
     assign count_9 = cnt;

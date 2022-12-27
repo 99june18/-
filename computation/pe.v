@@ -1,4 +1,4 @@
-module pe (clk, rst, pe_in, pe_filter, pe_out);
+module pe (clk, rst, pe_in, pe_filter, pe_out, pe_vaild);
     input clk;
     input rst;
 
@@ -8,11 +8,13 @@ module pe (clk, rst, pe_in, pe_filter, pe_out);
     reg [7 : 0] pe_f;
 
     output [7 : 0] pe_out;
+    output pe_vaild;
 
     // reg
     wire [7 : 0] mul_out;
     wire [7 : 0] acc_out;
     reg [7 : 0] pe_o;
+    reg pe_vaild_o;
     wire count_9;
 
 
@@ -33,10 +35,15 @@ module pe (clk, rst, pe_in, pe_filter, pe_out);
     always @(*) begin
         if (count_9) begin
             pe_o <= acc_out;
+            pe_vaild_o <= 1'b1;
+        end
+        else begin
+            pe_vaild_o <= 1'b0;
         end
     end
 
     assign pe_out = pe_o;
+    assign pe_vaild = pe_vaild_o;
 
 
 endmodule
