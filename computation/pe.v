@@ -5,11 +5,12 @@ module pe (clk, rst, pe_in, pe_filter, pe_out, mode_i, single_count_9);
     input [7 : 0] pe_in; // pe에 들어오는 input값
     input [7 : 0] pe_filter; // pe에 들어오는 filter값
     input [1:0] mode_i;
-    reg [7 : 0] pe_i;
-    reg [7 : 0] pe_f;
 
     output [7 : 0] pe_out; //pe에서의 결과값
     output single_count_9; // single pe 계산에서 9번째 값일 때 1
+    
+    reg [7 : 0] pe_i;
+    reg [7 : 0] pe_f;
     reg [7 : 0] pe_o;
     reg single_cnt_9;
 
