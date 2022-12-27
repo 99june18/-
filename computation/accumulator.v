@@ -1,4 +1,4 @@
-module accumulator(clk, rst, acc_vaild, acc_in, acc_out, count_9);
+module accumulator(clk, rst, acc_vaild, acc_in, acc_out);
 
     input clk;
     input rst;
@@ -8,9 +8,6 @@ module accumulator(clk, rst, acc_vaild, acc_in, acc_out, count_9);
 
     output [7 : 0] acc_out; //acc 결과값
     reg [7 : 0] acc, acc_n; //값 임시 저장
-
-    output count_9;   // count가 9가 되면 1이된다.
-    reg cnt_9;
 
     reg [3 : 0] count, count_n; //9까지 세야함
 
@@ -32,12 +29,10 @@ module accumulator(clk, rst, acc_vaild, acc_in, acc_out, count_9);
             if (count == 4'b1001) begin
                 count_n = 4'b0001;
                 acc_n = acc_in;
-                cnt_9 = 1'b1;
             end
             else begin
                 acc_n = acc_w;
                 count_n = count + 1;
-                cnt_9 = 1'b0;
             end
         end
         else begin
@@ -49,5 +44,4 @@ module accumulator(clk, rst, acc_vaild, acc_in, acc_out, count_9);
     eight_bit_full_adder_module eight_bit_full_adder(.a(acc), .b(acc_in), .cin(1'b0), .sum(acc_w), .cout());
 
     assign acc_out = acc;
-    assign count_9 = cnt_9;
 endmodule
