@@ -9,10 +9,11 @@ module tb_pe;
     reg [7:0] PE_FILTER;
  	
     wire [7:0] PE_OUT;
+    wire PE_VAILD;
 
     integer count1, count2, count3, count4;
 
-    pe u_pe(.clk(CLK), .rst(RST), .pe_in(PE_IN), .pe_filter(PE_FILTER), .pe_out(PE_OUT));
+    pe u_pe(.clk(CLK), .rst(RST), .pe_in(PE_IN), .pe_filter(PE_FILTER), .pe_out(PE_OUT), .pe_vaild(PE_VAILD));
 
 	initial
 	begin
