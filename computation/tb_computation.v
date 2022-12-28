@@ -73,7 +73,7 @@ module tb_computation;
         @(posedge clk);
         @(posedge clk);
         @(posedge clk);
-        for (i = 0; i < 38/*done count number+1*/; i = i+1) begin
+        for (i = 0; i < 37/*done count number+1*/; i = i+1) begin
             active_single = 1;
             @(posedge clk);
         end

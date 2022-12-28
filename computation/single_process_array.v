@@ -30,8 +30,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_single,c11,c12,c21,c22);
     parameter S0 = 0, S1 = 1, S2 = 2, S3 = 3, S4 = 4, S5 = 5, S6 = 6, S7 = 7, S8 = 8, S9 = 9, 
               S10 = 10, S11 = 11, S12 = 12, S13 = 13, S14 = 14, S15 = 15, S16 = 16, S17 = 17, S18 = 18, 
               S19 = 19, S20 = 20, S21 = 21, S22 = 22, S23 = 23, S24 = 24, S25 = 25, S26 = 26, S27 = 27, 
-              S28 = 28, S29 = 29, S30 = 30, S31 = 31, S32 = 32, S33 = 33, S34 = 34, S35 = 35, S36 = 36,
-              S37 = 37;
+              S28 = 28, S29 = 29, S30 = 30, S31 = 31, S32 = 32, S33 = 33, S34 = 34, S35 = 35, S36 = 36;
 
     pe u_pe(
         .clk       ( clk       ),
@@ -336,16 +335,8 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_single,c11,c12,c21,c22);
 
                     c22_output = pe_output;
 
-                    next_state <= S37;
-                end
-                S37: 
-                begin
-                    input_data = 8'b0;
-                    input_filter = 8'b0;
-
-                    next_state <= S0;
-
                     done_single_w = 1'b1;
+                    next_state <= S0;
                 end
             endcase
         end
