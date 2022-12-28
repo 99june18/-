@@ -67,7 +67,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_single,c11,c12,c21,c22);
 			next_state <= S0;
 		else if(active_single == 1'b1) 
         begin
-            pe_mode = 1;
+            pe_mode = 0;
 			case (state)
                 S0: 
                 begin
