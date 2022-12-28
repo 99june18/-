@@ -37,17 +37,6 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa2,c11,c12,c21,c22);
               S19 = 19, S20 = 20, S21 = 21, S22 = 22, S23 = 23, S24 = 24, S25 = 25, S26 = 26, S27 = 27, 
               S28 = 28, S29 = 29;
 
-    
-
-    pe pe_1(.clk(clk), .rst(rst), .pe_in(pe_in), .pe_filter( pe_filter ),
-        .pe_out(pe_out), .mode_in(mode_in), .mode_out(mode_out));
-    pe pe_2(.clk(clk), .rst(rst), .pe_in(pe_in), .pe_filter( pe_filter ),
-        .pe_out(pe_out), .mode_in(mode_in), .mode_out(mode_out));
-    pe pe_3(.clk(clk), .rst(rst), .pe_in(pe_in), .pe_filter( pe_filter ),
-        .pe_out(pe_out), .mode_in(mode_in), .mode_out(mode_out));
-    pe pe_4(.clk(clk), .rst(rst), .pe_in(pe_in), .pe_filter( pe_filter ),
-        .pe_out(pe_out), .mode_in(mode_in), .mode_out(mode_out));
-
     reg [7:0] input_acc1, input_acc2, input_acc3, input_acc4;
     reg active_acc1, active_acc2, active_acc3, active_acc4;
     wire [7:0] c11_w, c12_w, c21_w, c22_w;

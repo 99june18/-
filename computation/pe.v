@@ -102,7 +102,7 @@ module pe (clk, rst, pe_in, pe_filter, pe_out, mode_i, activate, pe_in_o, activa
             mux2_out = 0;
 	end
 
-    eight_bit_multiplier_module eight_bit_multiplier( .a(pe_in), .b(mux_out), .out (mul_out));
+    eight_bit_multiplier_module eight_bit_multiplier(.a(pe_in), .b(mux_out), .out (mul_out));
 
     accumulator u_accumulator(
         .clk       ( clk       ),
