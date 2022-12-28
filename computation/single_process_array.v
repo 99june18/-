@@ -62,6 +62,8 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_single,c11,c12,c21,c22);
     always @(*)
     begin
         next_state = state;
+
+        done_single_w = 0;
         
 		if (rst == 1'b1)
 			next_state <= S0;

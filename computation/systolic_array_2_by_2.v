@@ -76,6 +76,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa2,c11,c12,c21,c22);
         input_filter_2 = 0;
 
         mode = 3;
+        done_sa2_w = 0;
 
         if (rst == 1'b1)
 			next_state = S0;
