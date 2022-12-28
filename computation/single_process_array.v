@@ -33,9 +33,17 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_single,c11,c12,c21,c22);
               S28 = 28, S29 = 29, S30 = 30, S31 = 31, S32 = 32, S33 = 33, S34 = 34, S35 = 35, S36 = 36,
               S37 = 37;
 
-
-    pe u_pe(.clk(clk), .rst(rst), .pe_in(input_data), .pe_filter(input_filter),
-        .pe_out(pe_output), .mode_in(pe_mode));
+    pe u_pe(
+        .clk       ( clk       ),
+        .rst       ( rst       ),
+        .pe_in     ( input_data     ),
+        .pe_filter ( input_filter ),
+        .pe_out    ( pe_output    ),
+        .mode_i    ( pe_mode    ),
+        .activate  ( 1'b1 ),
+        .pe_in_o   (  ),
+        .activate_o ( )
+    );
 
     always @(posedge clk or posedge rst) 
     begin

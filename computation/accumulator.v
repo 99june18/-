@@ -1,4 +1,4 @@
-module accumulator_single(clk, rst, acc_vaild, acc_in, acc_out);
+module accumulator(clk, rst, acc_vaild, acc_in, acc_out);
 
     input clk;
     input rst;
