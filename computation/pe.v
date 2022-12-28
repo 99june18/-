@@ -1,4 +1,4 @@
-module pe (clk, rst, pe_in, pe_filter, pe_out, mode_in, mode_out);
+module pe (clk, rst, pe_in, pe_filter, pe_out, mode_in);
     input clk;
     input rst;
 
@@ -10,7 +10,6 @@ module pe (clk, rst, pe_in, pe_filter, pe_out, mode_in, mode_out);
     reg [1 : 0] mode, mode_n;
 
     output [7 : 0] pe_out; //pe에서의 결과값
-    output [1 : 0] mode_out;
     reg [7 : 0] pe_o;
 
     // wire
@@ -47,7 +46,7 @@ module pe (clk, rst, pe_in, pe_filter, pe_out, mode_in, mode_out);
 	end
 
     eight_bit_multiplier_module eight_bit_multiplier( .a(pe_in), .b(pe_filter), .out (mul_out));
-    accumulator accumulator_1( .clk(clk), .rst(rst), .acc_vaild(mode_in == accumulator_mode), .acc_in(mul_out), .acc_out(acc_out));
+    accumulator_single accumulator_1( .clk(clk), .rst(rst), .acc_vaild(mode_in == accumulator_mode), .acc_in(mul_out), .acc_out(acc_out));
 
     always @(*) begin
         case(mode)
@@ -58,6 +57,5 @@ module pe (clk, rst, pe_in, pe_filter, pe_out, mode_in, mode_out);
     end
 
     assign pe_out = pe_o;
-    assign mode_out = mode_in;
 
 endmodule

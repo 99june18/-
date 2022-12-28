@@ -1,4 +1,4 @@
-module accumulator(clk, rst, acc_vaild, acc_in, acc_out);
+module accumulator_systolic(clk, rst, acc_vaild, acc_in, acc_out);
 
     input clk;
     input rst;
@@ -9,35 +9,23 @@ module accumulator(clk, rst, acc_vaild, acc_in, acc_out);
     output [7 : 0] acc_out; //acc 결과값
     reg [7 : 0] acc, acc_n; //값 임시 저장
 
-    reg [3 : 0] count, count_n; //9까지 세야함
-
     wire [7 : 0] acc_w; // 8bit 덧셈기에서 나온 값
 
     always @(posedge clk or posedge rst) begin
         if (rst == 1'b1) begin
             acc <= 8'd0;
-            count <= 4'b0;
         end
         else begin
             acc <= acc_n;
-            count <= count_n;
         end
     end
 
     always @(*) begin
         if (acc_vaild == 1'b1) begin
-            if (count == 4'b1001) begin
-                count_n = 4'b0001;
-                acc_n = acc_in;
-            end
-            else begin
-                acc_n = acc_w;
-                count_n = count + 1;
-            end
+            acc_n = acc_w;
         end
         else begin
             acc_n = acc;
-            count_n = count;
         end
     end
 
