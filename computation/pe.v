@@ -23,8 +23,8 @@ module pe (clk, rst, pe_in, pe_filter, pe_out, mode_i, activate, pe_in_o, activa
 
     parameter
     single_mode  = 0, 
-    sa_mode      = 1, 
-    save_mode    = 2,
+    save_mode    = 1, 
+    sa_mode    = 2,
     initial_mode = 3;
 
     //저장용 ff
