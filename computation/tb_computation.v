@@ -5,7 +5,7 @@ module tb_computation;
     reg clk; 
 	reg rst;
 
-    reg active_store, active_single, active_sa3, active_sa2;
+    reg active_send, active_single, active_sa3, active_sa2;
 
     reg [7:0] a11,a12,a13,a14,
                 a21,a22,a23,a24,
@@ -17,7 +17,7 @@ module tb_computation;
                 b31,b32,b33;
 
     wire [7:0] c11,c12,c21,c22;
-    wire done_store, done_single, done_sa3, done_sa2;
+    wire done_send, done_single, done_sa3, done_sa2;
 
     initial
 	begin
@@ -32,7 +32,7 @@ module tb_computation;
         clk = 0;
         rst = 0;
 
-        active_store = 0; 
+        active_send = 0; 
         active_single = 0; 
         active_sa3 = 0; 
         active_sa2 = 0;
@@ -58,7 +58,7 @@ module tb_computation;
         rst = 0;
 
         @(posedge clk);
-        active_store = 1;
+        active_send = 1;
         a11 = 1; a12 = 2; a13 = 3; a14 = 4;
         a21 = 1; a22 = 2; a23 = 3; a24 = 4;
         a31 = 1; a32 = 2; a33 = 3; a34 = 4;
@@ -68,7 +68,7 @@ module tb_computation;
         b21 = 2; b22 = 2; b23 = 2;
         b31 = 3; b32 = 3; b33 = 3;
         @(posedge clk);
-        active_store = 0;
+        active_send = 0;
 
         @(posedge clk);
         for (i = 0; i < 37/*done count number+1*/; i = i+1) begin
@@ -96,7 +96,7 @@ module tb_computation;
     computation_module u_computation_module(
         .clk           ( clk           ),
         .rst           ( rst           ),
-        .active_store  ( active_store  ),
+        .active_send   ( active_send   ),
         .active_single ( active_single ),
         .active_sa3    ( active_sa3    ),
         .active_sa2    ( active_sa2    ),
@@ -129,7 +129,7 @@ module tb_computation;
         .c12           ( c12           ),
         .c21           ( c21           ),
         .c22           ( c22           ),
-        .done_store    ( done_store    ),
+        .done_send     ( done_send     ),
         .done_single   ( done_single   ),
         .done_sa3      ( done_sa3      ),
         .done_sa2      ( done_sa2      )
