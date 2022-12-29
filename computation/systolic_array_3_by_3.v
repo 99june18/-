@@ -94,7 +94,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
         done_sa3_w = 0;
 
         if (rst == 1'b1)
-			next_state <= S0;
+			next_state = S0;
 		else if(active_sa3 == 1'b1) 
         begin
             active_acc1 = 1'b0;
