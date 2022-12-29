@@ -1,6 +1,6 @@
 `timescale 1ns/1ns
 
-module tb_computation;
+module tb_core;
 
     reg clk; 
 	reg rst;
@@ -93,7 +93,7 @@ module tb_computation;
 
     end
 
-    computation_module u_computation_module(
+    core_module u_core_module(
         .clk           ( clk           ),
         .rst           ( rst           ),
         .active_send   ( active_send   ),

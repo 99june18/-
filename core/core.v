@@ -1,6 +1,6 @@
 
 
-module computation_module (clk,rst,active_send,active_single,active_sa3,active_sa2,a11,a12,a13,a14,a21,a22,a23,a24,a31,a32,a33,a34,a41,a42,a43,a44,
+module core_module (clk,rst,active_send,active_single,active_sa3,active_sa2,a11,a12,a13,a14,a21,a22,a23,a24,a31,a32,a33,a34,a41,a42,a43,a44,
 b11,b12,b13,b21,b22,b23,b31,b32,b33,c11,c12,c21,c22,done_send,done_single,done_sa3,done_sa2);
 
     input clk, rst;
