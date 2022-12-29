@@ -64,11 +64,12 @@ always @(posedge clk or posedge reset) begin
 // display the results
   always @(*) begin
     if (done_capture_displaymemory == 1'b1) begin
-      n_display_result = display_memory[num1];
       if (num1 == 12) begin
         n_state_display <= S_DONE_DISPLAY;
+        n_display_result <= 8'b0;
       end
       else begin
+      n_display_result = display_memory[num1];
       num2 = num1 + 1;
         if (num1 == 0) begin
           n_state_display <= S_PE_DISPLAY;
