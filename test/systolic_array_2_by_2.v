@@ -40,13 +40,13 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa2,c11,c12,c21,c22);
     wire [7:0] c11_w, c12_w, c21_w, c22_w;
 
     pe pe_1(.clk(clk), .rst(rst), .pe_in(input_data_1), .pe_filter(input_filter_1), .pe_out(pe1_w), .mode_i(mode),
-        .activate(1'b1), .pe_in_o(pe1_in_w), .activate_o());
+        .activate(1'b1), .pe_in_o(pe1_in_w));
     pe pe_2(.clk(clk), .rst(rst), .pe_in(pe1_in_w), .pe_filter(input_filter_2), .pe_out(pe2_w), .mode_i(mode),
-        .activate(1'b1), .pe_in_o(), .activate_o());
+        .activate(1'b1), .pe_in_o());
     pe pe_3(.clk(clk), .rst(rst), .pe_in(input_data_2), .pe_filter(pe1_w), .pe_out(pe3_w), .mode_i(mode),
-        .activate(1'b1), .pe_in_o(pe3_in_w), .activate_o());
+        .activate(1'b1), .pe_in_o(pe3_in_w));
     pe pe_4(.clk(clk), .rst(rst), .pe_in(pe3_in_w), .pe_filter(pe2_w), .pe_out(pe4_w), .mode_i(mode),
-        .activate(1'b1), .pe_in_o(), .activate_o());
+        .activate(1'b1), .pe_in_o());
 
     accumulator acc_c11(.clk(clk), .rst(rst),
         .acc_vaild(active_acc1), .acc_in(input_acc1), .acc_out(c11_w));

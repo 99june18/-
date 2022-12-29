@@ -153,7 +153,7 @@ module tb_top;
 
         @(posedge clk); 
         #(`DELTA) 
-        run = 0;
+        //run = 0;
 
         @(posedge clk); 
         for (i = 0; i < 112; i = i+1) begin

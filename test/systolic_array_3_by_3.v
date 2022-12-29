@@ -28,8 +28,6 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
     wire [7:0] pe1_in_w, pe2_in_w, pe4_in_w, pe5_in_w, pe7_in_w, pe8_in_w;
 
     reg [1:0] mode;
-
-    wire active_w1, active_w2, active_w3, active_w4, active_w5, active_w6;
     reg done_sa3_w;
 
     parameter S0 = 0, S1 = 1, S2 = 2, S3 = 3, S4 = 4, S5 = 5, S6 = 6, S7 = 7, S8 = 8, S9 = 9, 
@@ -37,25 +35,25 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
 
 
     pe u_pe_1(.clk(clk),.rst(rst),.pe_in(input_data_1),.pe_filter(input_filter_1),.pe_out(pe1_w),
-    .mode_i(mode), .activate(1'b1),.pe_in_o(pe1_in_w),.activate_o(active_w1));
+    .mode_i(mode), .activate(1'b1),.pe_in_o(pe1_in_w));
     pe u_pe_2(.clk(clk),.rst(rst),.pe_in(pe1_in_w),.pe_filter(input_filter_2),.pe_out(pe2_w),
-    .mode_i(mode), .activate(active_w1),.pe_in_o(pe2_in_w),.activate_o(active_w2));
+    .mode_i(mode), .activate(1'b1),.pe_in_o(pe2_in_w));
     pe u_pe_3(.clk(clk),.rst(rst),.pe_in(pe2_in_w),.pe_filter(input_filter_3),.pe_out(pe3_w),
-    .mode_i(mode), .activate(active_w2),.pe_in_o( ),.activate_o( ));
+    .mode_i(mode), .activate(1'b1),.pe_in_o( ));
     
     pe u_pe_4(.clk(clk),.rst(rst),.pe_in(input_data_2),.pe_filter(pe1_w),.pe_out(pe4_w),
-    .mode_i(mode), .activate(1'b1),.pe_in_o(pe4_in_w),.activate_o(active_w3));
+    .mode_i(mode), .activate(1'b1),.pe_in_o(pe4_in_w));
     pe u_pe_5(.clk(clk),.rst(rst),.pe_in(pe4_in_w),.pe_filter(pe2_w),.pe_out(pe5_w),
-    .mode_i(mode), .activate(active_w3),.pe_in_o(pe5_in_w),.activate_o(active_w4));
+    .mode_i(mode), .activate(1'b1),.pe_in_o(pe5_in_w));
     pe u_pe_6(.clk(clk),.rst(rst),.pe_in(pe5_in_w),.pe_filter(pe3_w),.pe_out(pe6_w),
-    .mode_i(mode), .activate(active_w4),.pe_in_o( ),.activate_o( ));
+    .mode_i(mode), .activate(1'b1),.pe_in_o( ));
     
     pe u_pe_7(.clk(clk),.rst(rst),.pe_in(input_data_3),.pe_filter(pe4_w),.pe_out(pe7_w),
-    .mode_i(mode), .activate(1'b1),.pe_in_o(pe7_in_w),.activate_o(active_w5));
+    .mode_i(mode), .activate(1'b1),.pe_in_o(pe7_in_w));
     pe u_pe_8(.clk(clk),.rst(rst),.pe_in(pe7_in_w),.pe_filter(pe5_w),.pe_out(pe8_w),
-    .mode_i(mode), .activate(active_w5),.pe_in_o(pe8_in_w),.activate_o(active_w6));
+    .mode_i(mode), .activate(1'b1),.pe_in_o(pe8_in_w));
     pe u_pe_9(.clk(clk),.rst(rst),.pe_in(pe8_in_w),.pe_filter(pe6_w),.pe_out(pe9_w),
-    .mode_i(mode), .activate(active_w6),.pe_in_o( ),.activate_o( ));
+    .mode_i(mode), .activate(1'b1),.pe_in_o( ));
 
     //acc port
     reg [7:0] input_acc1, input_acc2, input_acc3, input_acc4;
@@ -96,7 +94,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
         done_sa3_w = 0;
 
         if (rst == 1'b1)
-			next_state <= S0;
+			next_state = S0;
 		else if(active_sa3 == 1'b1) 
         begin
             active_acc1 = 1'b0;
@@ -163,7 +161,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
                     input_data_2 = a22;
                     input_data_3 = a31;
 
-                    next_state <= S6;
+                    next_state = S6;
                 end
                 S6: 
                 begin
@@ -176,7 +174,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
                     input_acc1 = pe7_w;
                     active_acc1 = 1'b1;
 
-                    next_state <= S7;
+                    next_state = S7;
                 end
                 S7: 
                 begin
@@ -189,7 +187,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
                     input_acc2 = pe7_w;
                     active_acc2 = 1'b1;
 
-                    next_state <= S8;
+                    next_state = S8;
                 end
                 S8: 
                 begin
@@ -202,7 +200,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
                     input_acc1 = pe8_w;
                     active_acc1 = 1'b1;
 
-                    next_state <= S9;
+                    next_state = S9;
                 end
                 S9: 
                 begin
@@ -215,7 +213,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
                     input_acc2 = pe8_w;
                     active_acc2 = 1'b1;
 
-                    next_state <= S10;
+                    next_state = S10;
                 end
                 S10: 
                 begin
@@ -230,7 +228,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
                     active_acc3 = 1'b1;
                     active_acc1 = 1'b1;
 
-                    next_state <= S11;
+                    next_state = S11;
                 end
                 S11: 
                 begin
@@ -245,7 +243,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
                     active_acc4 = 1'b1;
                     active_acc2 = 1'b1;
 
-                    next_state <= S12;
+                    next_state = S12;
                 end
                 S12: 
                 begin
@@ -258,7 +256,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
                     input_acc3 = pe8_w;
                     active_acc3 = 1'b1;
 
-                    next_state <= S13;
+                    next_state = S13;
                 end
                 S13: 
                 begin
@@ -271,7 +269,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
                     input_acc4 = pe8_w;
                     active_acc4 = 1'b1;
 
-                    next_state <= S14;
+                    next_state = S14;
                 end
                 S14: 
                 begin
@@ -284,7 +282,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
                     input_acc3 = pe9_w;
                     active_acc3 = 1'b1;
 
-                    next_state <= S15;
+                    next_state = S15;
                 end
                 S15: 
                 begin
@@ -296,7 +294,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
                     input_acc4 = pe9_w;
                     active_acc4 = 1'b1;
 
-                    next_state <= S16;
+                    next_state = S16;
                 end
                 S16: 
                 begin
@@ -308,7 +306,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_sa3,c11,c12,c21,c22);
 
                     done_sa3_w = 1'b1;
 
-                    next_state <= 0;
+                    next_state = 0;
                 end
                 
             endcase

@@ -29,7 +29,7 @@ display_result, display_current_state);
 	wire done_PE;
 	wire done_SA_3x3;
 	wire done_SA_2x2;
-	wire current_display;
+	wire [2:0] current_display;
 
 	wire state_idle;
 	wire state_capture;
@@ -153,10 +153,10 @@ memory u_memory(
     .done_capture        ( done_capture        )
 );
 
-computation_module u_computation_module(
+core_module u_core_module(
         .clk           ( clk           ),
         .rst           ( reset           ),
-        .active_store  ( state_send  ),
+        .active_send  ( state_send  ),
         .active_single ( state_PE ),
         .active_sa3    ( state_SA_3x3    ),
         .active_sa2    ( state_SA_2x2    ),
@@ -189,7 +189,7 @@ computation_module u_computation_module(
         .c12           ( c12           ),
         .c21           ( c21           ),
         .c22           ( c22           ),
-        .done_store    ( done_send    ),
+        .done_send    ( done_send    ),
         .done_single   ( done_PE   ),
         .done_sa3      ( done_SA_3x3      ),
         .done_sa2      ( done_SA_2x2      )

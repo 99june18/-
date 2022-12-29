@@ -30,8 +30,10 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_single,c11,c12,c21,c22);
     parameter S0 = 0, S1 = 1, S2 = 2, S3 = 3, S4 = 4, S5 = 5, S6 = 6, S7 = 7, S8 = 8, S9 = 9, 
               S10 = 10, S11 = 11, S12 = 12, S13 = 13, S14 = 14, S15 = 15, S16 = 16, S17 = 17, S18 = 18, 
               S19 = 19, S20 = 20, S21 = 21, S22 = 22, S23 = 23, S24 = 24, S25 = 25, S26 = 26, S27 = 27, 
-              S28 = 28, S29 = 29, S30 = 30, S31 = 31, S32 = 32, S33 = 33, S34 = 34, S35 = 35, S36 = 36,
-              S37 = 37;
+              S28 = 28, S29 = 29, S30 = 30, S31 = 31, S32 = 32, S33 = 33, S34 = 34, S35 = 35, S36 = 36;
+
+    pe pe_1(.clk(clk), .rst(rst), .pe_in(input_data), .pe_filter(input_filter), .pe_out(pe_output),
+        .mode_i(pe_mode), .activate(1'b1), .pe_in_o( ));
 
     always @(posedge clk or posedge rst) 
     begin
@@ -50,75 +52,77 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_single,c11,c12,c21,c22);
     always @(*)
     begin
         next_state = state;
+
+        done_single_w = 0;
         
 		if (rst == 1'b1)
-			next_state <= S0;
+			next_state = S0;
 		else if(active_single == 1'b1) 
         begin
-            pe_mode = 1;
+            pe_mode = 0;
 			case (state)
                 S0: 
                 begin
                     input_data = a11;
                     input_filter = b33;
 
-                    next_state <= S1;
+                    next_state = S1;
                 end
                 S1: 
                 begin
                     input_data = a12;
                     input_filter = b32;
 
-                    next_state <= S2;
+                    next_state = S2;
                 end
                 S2: 
                 begin
                     input_data = a13;
                     input_filter = b31;
 
-                    next_state <= S3;
+                    next_state = S3;
                 end
                 S3: 
                 begin
                     input_data = a21;
                     input_filter = b23;
 
-                    next_state <= S4;
+                    next_state = S4;
                 end
                 S4: 
                 begin
                     input_data = a22;
                     input_filter = b22;
 
-                    next_state <= S5;
+                    next_state = S5;
                 end
                 S5: 
                 begin
                     input_data = a23;
                     input_filter = b21;
 
-                    next_state <= S6;
+                    next_state = S6;
                 end
                 S6: 
                 begin
                     input_data = a31;
                     input_filter = b13;
 
-                    next_state <= S7;
+                    next_state = S7;
                 end
                 S7: 
                 begin
                     input_data = a32;
                     input_filter = b12;
 
-                    next_state <= S8;
+                    next_state = S8;
                 end
                 S8: 
                 begin
                     input_data = a33;
                     input_filter = b11;
 
-                    next_state <= S9;
+                    next_state = S9;
                 end
                 S9: 
                 begin
@@ -127,63 +131,63 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_single,c11,c12,c21,c22);
 
                     c11_output = pe_output;
 
-                    next_state <= S10;
+                    next_state = S10;
                 end
                 S10: 
                 begin
                     input_data = a13;
                     input_filter = b32;
 
-                    next_state <= S11;
+                    next_state = S11;
                 end
                 S11: 
                 begin
                     input_data = a14;
                     input_filter = b31;
 
-                    next_state <= S12;
+                    next_state = S12;
                 end
                 S12: 
                 begin
                     input_data = a22;
                     input_filter = b23;
 
-                    next_state <= S13;
+                    next_state = S13;
                 end
                 S13: 
                 begin
                     input_data = a23;
                     input_filter = b22;
 
-                    next_state <= S14;
+                    next_state = S14;
                 end
                 S14: 
                 begin
                     input_data = a24;
                     input_filter = b21;
 
-                    next_state <= S15;
+                    next_state = S15;
                 end
                 S15: 
                 begin
                     input_data = a32;
                     input_filter = b13;
 
-                    next_state <= S16;
+                    next_state = S16;
                 end
                 S16: 
                 begin
                     input_data = a33;
                     input_filter = b12;
 
-                    next_state <= S17;
+                    next_state = S17;
                 end
                 S17: 
                 begin
                     input_data = a34;
                     input_filter = b11;
 
-                    next_state <= S18;
+                    next_state = S18;
                 end
                 S18: 
                 begin
@@ -192,63 +196,63 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_single,c11,c12,c21,c22);
 
                     c12_output = pe_output;
 
-                    next_state <= S19;
+                    next_state = S19;
                 end
                 S19: 
                 begin
                     input_data = a22;
                     input_filter = b32;
 
-                    next_state <= S20;
+                    next_state = S20;
                 end
                 S20: 
                 begin
                     input_data = a23;
                     input_filter = b31;
 
-                    next_state <= S21;
+                    next_state = S21;
                 end
                 S21: 
                 begin
                     input_data = a31;
                     input_filter = b23;
 
-                    next_state <= S22;
+                    next_state = S22;
                 end
                 S22: 
                 begin
                     input_data = a32;
                     input_filter = b22;
 
-                    next_state <= S23;
+                    next_state = S23;
                 end
                 S23: 
                 begin
                     input_data = a33;
                     input_filter = b21;
 
-                    next_state <= S24;
+                    next_state = S24;
                 end
                 S24: 
                 begin
                     input_data = a41;
                     input_filter = b13;
 
-                    next_state <= S25;
+                    next_state = S25;
                 end
                 S25: 
                 begin
                     input_data = a42;
                     input_filter = b12;
 
-                    next_state <= S26;
+                    next_state = S26;
                 end
                 S26: 
                 begin
                     input_data = a43;
                     input_filter = b11;
 
-                    next_state <= S27;
+                    next_state = S27;
                 end
                 S27: 
                 begin
@@ -257,63 +261,63 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_single,c11,c12,c21,c22);
 
                     c21_output = pe_output;
 
-                    next_state <= S28;
+                    next_state = S28;
                 end
                 S28: 
                 begin
                     input_data = a23;
                     input_filter = b32;
 
-                    next_state <= S29;
+                    next_state = S29;
                 end
                 S29: 
                 begin
                     input_data = a24;
                     input_filter = b31;
 
-                    next_state <= S30;
+                    next_state = S30;
                 end
                 S30: 
                 begin
                     input_data = a32;
                     input_filter = b23;
 
-                    next_state <= S31;
+                    next_state = S31;
                 end
                 S31: 
                 begin
                     input_data = a33;
                     input_filter = b22;
 
-                    next_state <= S32;
+                    next_state = S32;
                 end
                 S32: 
                 begin
                     input_data = a34;
                     input_filter = b21;
 
-                    next_state <= S33;
+                    next_state = S33;
                 end
                 S33: 
                 begin
                     input_data = a42;
                     input_filter = b13;
 
-                    next_state <= S34;
+                    next_state = S34;
                 end
                 S34: 
                 begin
                     input_data = a43;
                     input_filter = b12;
 
-                    next_state <= S35;
+                    next_state = S35;
                 end
                 S35: 
                 begin
                     input_data = a44;
                     input_filter = b11;
 
-                    next_state <= S36;
+                    next_state = S36;
                 end
                 S36: 
                 begin
@@ -322,16 +326,8 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_single,c11,c12,c21,c22);
 
                     c22_output = pe_output;
 
-                    next_state <= S37;
-                end
-                S37: 
-                begin
-                    input_data = 8'b0;
-                    input_filter = 8'b0;
-
-                    next_state = 0;
-
                     done_single_w = 1'b1;
+                    next_state = S0;
                 end
             endcase
         end
