@@ -159,7 +159,7 @@ module tb_top;
         //run = 0;
 
         @(posedge clk); 
-        for (i = 0; i < 112; i = i+1) begin
+        for (i = 0; i < 98; i = i+1) begin
         // 112cycle
         @(posedge clk);
         end

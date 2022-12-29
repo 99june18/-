@@ -80,9 +80,6 @@ always @(posedge clk or posedge reset) begin
         else if (num1 == 8) begin
           n_state_display <= S_2x2_DISPLAY;
         end
-        else if (num1 == 12) begin
-          n_state_display <= S_DONE_DISPLAY;
-        end
       end
     end
   end
