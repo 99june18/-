@@ -162,51 +162,51 @@ module tb_top;
         end
 
         $display("single_c11 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        //$display("current state : %d", display_current_state);
 
         @(posedge clk);
         $display("single_c12 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        //$display("current state : %d", display_current_state);
 
         @(posedge clk);
         $display("single_c21 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        //$display("current state : %d", display_current_state);
 
         @(posedge clk);
         $display("single_c22 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        //$display("current state : %d", display_current_state);
 
         @(posedge clk);
         $display("systolic3_c11 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        //$display("current state : %d", display_current_state);
 
         @(posedge clk);
         $display("systolic3_c12 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        //$display("current state : %d", display_current_state);
 
         @(posedge clk);
         $display("systolic3_c21 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        //$display("current state : %d", display_current_state);
 
         @(posedge clk);
         $display("systolic3_c22 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        //$display("current state : %d", display_current_state);
 
         @(posedge clk);
         $display("systolic2_c11 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        //$display("current state : %d", display_current_state);
 
         @(posedge clk);
         $display("systolic2_c12 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        //$display("current state : %d", display_current_state);
 
         @(posedge clk);
         $display("systolic2_c21 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        //$display("current state : %d", display_current_state);
 
         @(posedge clk);
         $display("systolic2_c22 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        //$display("current state : %d", display_current_state);
         
 	end
 

@@ -70,6 +70,13 @@ module tb_top;
 		clk = 0;
         reset = 0;
         run = 0;
+        @(posedge clk);
+        #(`DELTA) // propagation delay
+        reset = 1; // external siganl (external means top input)
+        @(posedge clk); 
+        #(`DELTA) 
+        reset = 0;
+        @(posedge clk);
         
         a11 =     3       ; a12 =      1       ; a13 =    6       ; a14 =     5     ;
         a21 =      7      ; a22 =     5        ; a23 =      2     ; a24 =     7     ;
@@ -138,16 +145,12 @@ module tb_top;
     integer i;
 
     initial 
-	begin
-		@(posedge clk); 
-        #(`DELTA) // propagation delay
-        reset = 1; // external siganl (external means top input)
-        
+	begin        
+        @(posedge clk);
+        @(posedge clk);
         @(posedge clk); 
-        #(`DELTA) 
-        reset = 0;
-
-        @(posedge clk); 
+        @(posedge clk);
+        @(posedge clk);
         #(`DELTA) 
         run = 1;
 

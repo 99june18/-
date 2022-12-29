@@ -29,11 +29,6 @@ module tb_display;
 		end
 	end
 
- //   always @(*) begin
-  //      c = c_tb[c_select_o];
-  //  end
-
-    integer i; 
 
     // initial setting
 	initial 

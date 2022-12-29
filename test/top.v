@@ -29,7 +29,7 @@ display_result, display_current_state);
 	wire done_PE;
 	wire done_SA_3x3;
 	wire done_SA_2x2;
-	wire [2:0] current_display;
+	wire [2:0] state_display_o;
 
 	wire state_idle;
 	wire state_capture;
@@ -80,7 +80,7 @@ controller u_controller(
 memory u_memory(
     .clk                     ( clk                     ),
     .reset                     ( reset                     ),
-    .run_valid_i            ( state_capture            ),
+    .run_valid_i            ( run            ),
     .a11                     ( a11                     ),
     .a12                     ( a12                     ),
     .a13                     ( a13                     ),

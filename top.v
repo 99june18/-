@@ -29,7 +29,7 @@ display_result, display_current_state);
 	wire done_PE;
 	wire done_SA_3x3;
 	wire done_SA_2x2;
-	wire [2:0] current_display;
+	wire [2:0] state_display_o;
 
 	wire state_idle;
 	wire state_capture;
@@ -48,7 +48,7 @@ controller u_controller(
     .done_PE ( done_PE  ),
     .done_SA_3x3    ( done_SA_3x3    ),
     .done_SA_2x2    ( done_SA_2x2    ),
-    .current_display ( current_display ),
+    .current_display ( state_display_o ),
     .state_idle   ( state_idle   ),
     .state_capture  ( state_capture  ),
     .state_send   ( state_send   ),
