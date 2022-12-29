@@ -71,8 +71,6 @@ module tb_computation;
         active_store = 0;
 
         @(posedge clk);
-        @(posedge clk);
-        @(posedge clk);
         for (i = 0; i < 37/*done count number+1*/; i = i+1) begin
             active_single = 1;
             @(posedge clk);
@@ -80,16 +78,12 @@ module tb_computation;
         active_single = 0;
 
         @(posedge clk);
-        @(posedge clk);
-        @(posedge clk);
         for (i = 0; i < 17/*done count number+1*/; i = i+1) begin
             active_sa3 = 1;
             @(posedge clk);
         end
         active_sa3 = 0;
 
-        @(posedge clk);
-        @(posedge clk);
         @(posedge clk);
         for (i = 0; i < 29/*done count number+1*/; i = i+1) begin
             active_sa2 = 1;

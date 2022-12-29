@@ -40,8 +40,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,done_single,c11,c12,c21,c22);
         .pe_out    ( pe_output    ),
         .mode_i    ( pe_mode    ),
         .activate  ( 1'b1 ),
-        .pe_in_o   (  ),
-        .activate_o ( )
+        .pe_in_o   (  )
     );
 
     always @(posedge clk or posedge rst) 

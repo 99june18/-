@@ -1,4 +1,4 @@
-module pe (clk, rst, pe_in, pe_filter, pe_out, mode_i, activate, pe_in_o, activate_o);
+module pe (clk, rst, pe_in, pe_filter, pe_out, mode_i, activate, pe_in_o);
     input clk;
     input rst;
 
@@ -9,7 +9,6 @@ module pe (clk, rst, pe_in, pe_filter, pe_out, mode_i, activate, pe_in_o, activa
 
     output [7:0] pe_in_o;
     output [7:0] pe_out; //pe에서의 결과값
-    output activate_o;
 
     reg [7:0] pe_n, pe_w;
     reg [7:0] activate_n, activate_w;
@@ -44,17 +43,15 @@ module pe (clk, rst, pe_in, pe_filter, pe_out, mode_i, activate, pe_in_o, activa
         end
 	end
 
-    //타이밍용 ff 4개
+    //타이밍용 ff 3개
     always @ (posedge clk or posedge rst) begin
 		if (rst == 1'b1) begin
             pe_n        <= 8'b0;
-            activate_n    <= 1'b0;
 
             sum_out_n     <= 8'b0;
             mode_n        <= initial_mode;
         end else begin
 			pe_n          <= pe_w;
-            activate_n    <= activate_w;
 
             sum_out_n   <= sum_out_w;
             mode_n      <= mode_w;
@@ -63,11 +60,9 @@ module pe (clk, rst, pe_in, pe_filter, pe_out, mode_i, activate, pe_in_o, activa
 
     always @ (*)
 	begin
-        pe_w             = pe_n;
-        activate_w       = activate_n;               
+        pe_w             = pe_n;            
         if (mode_i != initial_mode) begin
             pe_w             = pe_in;
-            activate_w       = activate;
         end
         
         mode_w          = mode_i;
@@ -116,7 +111,5 @@ module pe (clk, rst, pe_in, pe_filter, pe_out, mode_i, activate, pe_in_o, activa
 
     assign pe_out = mux2_out;
     assign pe_in_o = pe_n;
-    assign activate_o = activate_n;
-
 
 endmodule
