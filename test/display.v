@@ -30,8 +30,6 @@ display_result_o, state_display_o);
       display_memory[0] <= 8'b0; display_memory[1] <= 8'b0; display_memory[2] <= 8'b0; display_memory[3] <= 8'b0;
       display_memory[4] <= 8'b0; display_memory[5] <= 8'b0; display_memory[6] <= 8'b0; display_memory[7] <= 8'b0;
       display_memory[8] <= 8'b0; display_memory[9] <= 8'b0; display_memory[10] <= 8'b0; display_memory[11] <= 8'b0;
-      //done_display_PE <= 1'b0; done_display_3x3 <= 1'b0; done_display_2x2 <= 1'b0;
-      //state_display <= 3'b0; n_state_display <= 3'b0;
     end
     else if (run_display == 1'b1) begin
       display_memory[0] <= c11_PE; display_memory[1] <= c12_PE; 
@@ -45,10 +43,13 @@ display_result_o, state_display_o);
   end
 
 reg [2:0] state_display, n_state_display;
+
 parameter S_PE_IDLE = 0, S_PE_DISPLAY = 1, S_3x3_DISPLAY = 2, S_2x2_DISPLAY = 3, S_DONE_DISPLAY = 4;
+
 reg [3:0] num1, num2;
+
 always @(posedge clk or posedge reset) begin
-  if(reset == 1'b1) 
+  if (reset == 1'b1) 
     begin
       num1 <= 4'b0; num2 <= 4'b0;
       state_display <= 3'b0; n_state_display <= 3'b0;
@@ -64,18 +65,23 @@ always @(posedge clk or posedge reset) begin
   always @(*) begin
     if (done_capture_displaymemory == 1'b1) begin
       n_display_result = display_memory[num1];
-      num2 = num1 + 1;
-      if (num1 == 0) begin
-        n_state_display <= S_PE_DISPLAY;
-      end
-      if (num1 == 4) begin
-        n_state_display <= S_3x3_DISPLAY;
-      end
-      else if (num1 == 8) begin
-        n_state_display <= S_2x2_DISPLAY;
-      end
-      else if (num1 == 12) begin
+      if (num1 == 12) begin
         n_state_display <= S_DONE_DISPLAY;
+      end
+      else begin
+      num2 = num1 + 1;
+        if (num1 == 0) begin
+          n_state_display <= S_PE_DISPLAY;
+        end
+        if (num1 == 4) begin
+          n_state_display <= S_3x3_DISPLAY;
+        end
+        else if (num1 == 8) begin
+          n_state_display <= S_2x2_DISPLAY;
+        end
+        else if (num1 == 12) begin
+          n_state_display <= S_DONE_DISPLAY;
+        end
       end
     end
   end
