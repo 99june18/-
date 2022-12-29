@@ -16,7 +16,7 @@ b11,b12,b13,b21,b22,b23,b31,b32,b33,c11,c12,c21,c22,done_store,done_single,done_
                 b31,b32,b33;
 
     output [7:0] c11,c12,c21,c22;
-    output done_store, done_single, done_sa3, done_sa2;
+    output done_store, done_single, done_sa3, done_sa2;  // controller와 연결
 
     wire [7:0]
         a11_w,a12_w,a13_w,a14_w,
