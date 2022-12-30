@@ -39,14 +39,14 @@ module tb_top;
         reset = 0;
         @(posedge clk);
         
-        a11 =     3       ; a12 =      1       ; a13 =    6       ; a14 =     5     ;
-        a21 =      7      ; a22 =     5        ; a23 =      2     ; a24 =     7     ;
-        a31 =      7      ; a32 =       10      ; a33 =     8      ; a34 =    9      ;
-        a41 =       1     ; a42 =      3       ; a43 =      2     ; a44 =     10     ;
+        a11 =     8       ; a12 =      6       ; a13 =    10      ; a14 =     10     ;
+        a21 =      9      ; a22 =     1        ; a23 =      10   ; a24 =     5    ;
+        a31 =      1      ; a32 =       3      ; a33 =     1      ; a34 =    8      ;
+        a41 =       10     ; a42 =      6      ; a43 =      10; a44 =     1    ;
 
-        b11 =      3      ; b12 =       1      ; b13 =      4     ; 
-        b21 =      0      ; b22 =      5       ; b23 =      1     ; 
-        b31 =        0    ; b32 =       1      ; b33 =      5     ; 
+        b11 =      2     ; b12 =       5      ; b13 =      5     ; 
+        b21 =      5     ; b22 =      3       ; b23 =      5     ; 
+        b31 =       4    ; b32 =       0      ; b33 =      4     ; 
 	end
 
     integer i;
@@ -58,10 +58,9 @@ module tb_top;
         run = 1;
 
         @(posedge clk);
-        //run = 0;
 
         @(posedge clk); 
-        for (i = 0; i < 98; i = i+1) begin
+        for (i = 0; i < 87; i = i+1) begin
         @(posedge clk);
         end
 
@@ -78,7 +77,7 @@ module tb_top;
 
         @(posedge clk);
         $display("single_c22 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        $display("current state : %d\n", display_current_state);
 
         @(posedge clk);
         $display("systolic3_c11 : %d", display_result);
@@ -94,7 +93,7 @@ module tb_top;
 
         @(posedge clk);
         $display("systolic3_c22 : %d", display_result);
-        $display("current state : %d", display_current_state);
+        $display("current state : %d\n", display_current_state);
 
         @(posedge clk);
         $display("systolic2_c11 : %d", display_result);
