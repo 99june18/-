@@ -35,7 +35,6 @@ state_idle, state_capture, state_send, state_PE, state_SA_3x3, state_SA_2x2, sta
 	end
 
 
-	//Determine the next state
 	//state machine
 	always @ (*)
 	begin

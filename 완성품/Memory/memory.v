@@ -9,15 +9,14 @@ PE_valid_i, SA_3x3_valid_i, SA_2x2_valid_i);
 	input clk; 
 	input reset;
 
-  input run_valid_i; // == state_write : data is captured one clock later than init_valid_i rising.
+  input run_valid_i; // top의 run 신호
                     
-  input PE_valid_i;  // computation의 done 신호와 연결
-  input SA_3x3_valid_i;  // computation의 done 신호와 연결
-  input SA_2x2_valid_i;  // computation의 done 신호와 연결
+  input PE_valid_i;  // controller와 연결
+  input SA_3x3_valid_i;  // controller와 연결
+  input SA_2x2_valid_i; // controller와 연결
 
 
-  output reg done_capture;
- // computation의 active_store과 연결
+  output reg done_capture; // computation의 active_store과 연결
 
   input [7:0]
     a11, a12, a13, a14,

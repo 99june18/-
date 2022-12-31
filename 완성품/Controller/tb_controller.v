@@ -21,7 +21,7 @@ module tb_controller;
 	wire state_SA_2x2;
 	wire state_display;
 	
-	//clock
+	// clock
 	initial
 	begin
 	    forever
@@ -30,83 +30,83 @@ module tb_controller;
 		end
 	end
 
-    // initial setting
+  // initialization
 	initial 
 	begin
 		clk = 0;
-        reset = 0;
-        run = 0;
-        done_capture = 0;
-        done_send = 0;
-        done_PE = 0;
-        done_SA_3x3 = 0;
-        done_SA_2x2 = 0;
-        current_display = 0;
+    reset = 0;
+    run = 0;
+    done_capture = 0;
+    done_send = 0;
+    done_PE = 0;
+    done_SA_3x3 = 0;
+    done_SA_2x2 = 0;
+    current_display = 0;
 	end
     
-    initial 
+  initial 
 	begin
 		@(posedge clk); 
-        #(`DELTA) // propagation delay
-        reset = 1; // external siganl (external means top input)
+    #(`DELTA)
+    reset = 1;
         
-        @(posedge clk); 
-        #(`DELTA) 
-        reset = 0;
+    @(posedge clk); 
+    #(`DELTA) 
+    reset = 0;
 
-        @(posedge clk); 
-        #(`DELTA) 
-        run = 1;
+    @(posedge clk); 
+    #(`DELTA) 
+    run = 1;
 
-        @(posedge clk);
-        done_capture = 1;
-        #(`DELTA) 
-        run = 0; // external siganl 
+    @(posedge clk);
+    done_capture = 1;
+    #(`DELTA) 
+    run = 0;
 
-        @(posedge clk); // load start
-        done_send = 0;
+    @(posedge clk);
+    done_send = 0;
 
-        @(posedge clk); // load waiting
-        @(posedge clk);
-        @(posedge clk);
+    @(posedge clk);
+    @(posedge clk);
+    @(posedge clk);
 
-        @(posedge clk); 
-        done_send = 1;
+    @(posedge clk); 
+    done_send = 1;
 
-        @(posedge clk); // single start
-        done_send = 0;
+    @(posedge clk);
+    done_send = 0;
 
-        @(posedge clk); // single waiting
-        @(posedge clk);
-        @(posedge clk);
+    @(posedge clk);
+    @(posedge clk);
+    @(posedge clk);
 
         @(posedge clk); 
         done_PE = 1;
 
-        @(posedge clk); // sys3 start
+        @(posedge clk);
         done_PE = 0;
 
-        @(posedge clk); // sys3 waiting
+        @(posedge clk);
         @(posedge clk);
         @(posedge clk);
 
         @(posedge clk); 
         done_SA_3x3 = 1;
 
-        @(posedge clk); // sys2 start
+        @(posedge clk);
         done_SA_3x3 = 0;
 
-        @(posedge clk); // sys2 waiting
+        @(posedge clk);
         @(posedge clk);
         @(posedge clk);
 
         @(posedge clk); 
         done_SA_2x2 = 1;
 
-        @(posedge clk); // display start
+        @(posedge clk);
         done_SA_2x2 = 0;
 
-        @(posedge clk); // display waiting
+        @(posedge clk);
         @(posedge clk);
         @(posedge clk);
 

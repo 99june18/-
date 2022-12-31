@@ -5,11 +5,11 @@ module tb_memory;
 	reg clk; 
 	reg reset;
 
-  reg run_valid_i; // == state_write : data is captured one clock later than init_valid_i rising.
+  reg run_valid_i; 
                     
-  reg PE_valid_i;  // computation의 done 신호와 연결
-  reg SA_3x3_valid_i;  // computation의 done 신호와 연결
-  reg SA_2x2_valid_i;  // computation의 done 신호와 연결
+  reg PE_valid_i;  
+  reg SA_3x3_valid_i; 
+  reg SA_2x2_valid_i;  
 
 
   wire done_capture;
@@ -56,7 +56,7 @@ module tb_memory;
 		end
 	end
 
-    // initial setting
+    // initialization
 	initial 
 	begin
 		clk = 0;
@@ -77,16 +77,13 @@ module tb_memory;
         PE_valid_i = 0;
         SA_3x3_valid_i = 0;
         SA_2x2_valid_i = 0;
-
-        //done_capture = 1'b0;
-        //active_computation = 1'b0;
 	end
     
     initial 
 	begin
 		@(posedge clk); 
-        #(`DELTA) // propagation delay
-        reset = 1; // external siganl (external means top input)
+        #(`DELTA)
+        reset = 1;
         
         @(posedge clk); 
         #(`DELTA) 
@@ -104,24 +101,22 @@ module tb_memory;
 
         @(posedge clk);
         run_valid_i = 1; 
-        //intial values capture
         @(posedge clk);
         @(posedge clk);
         run_valid_i = 0;
 
         @(posedge clk);
-        // random load test
-        @(posedge clk); // load 
+        @(posedge clk);
         @(posedge clk);
         @(posedge clk);
         @(posedge clk);
         @(posedge clk);
 
         @(posedge clk);
-        PE_valid_i = 1; //single start
+        PE_valid_i = 1; 
         @(posedge clk);
         @(posedge clk);
-        @(posedge clk); // single compute wait
+        @(posedge clk);
         @(posedge clk);
         @(posedge clk);
         c11 = 8'd26;    
@@ -131,10 +126,10 @@ module tb_memory;
         @(posedge clk);
         PE_valid_i = 0;
 
-        SA_3x3_valid_i = 1; // sys3 start
+        SA_3x3_valid_i = 1; 
         @(posedge clk);
         @(posedge clk);
-        @(posedge clk); // sys3 compute wait
+        @(posedge clk); 
         @(posedge clk);
         @(posedge clk);
         c11 = 8'd30;    
@@ -144,11 +139,10 @@ module tb_memory;
         @(posedge clk);
         SA_3x3_valid_i = 0;
         
-        //c22 = 8'd90; if this statement is exist, anyway c22 will be still 33
-        SA_2x2_valid_i = 1; // sys2 start
+        SA_2x2_valid_i = 1; 
         @(posedge clk);
         @(posedge clk);
-        @(posedge clk); // sys2 compute wait
+        @(posedge clk); 
         @(posedge clk);
         @(posedge clk);
         c11 = 8'd34;    
@@ -158,8 +152,7 @@ module tb_memory;
         @(posedge clk);
         SA_2x2_valid_i = 0;
 
-        // random display test
-        @(posedge clk); //display
+        @(posedge clk); 
         @(posedge clk);
         @(posedge clk);
         @(posedge clk);

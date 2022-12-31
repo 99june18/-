@@ -61,6 +61,7 @@ always @(posedge clk or posedge reset) begin
       state_display  <= n_state_display;
     end
   end
+  
 // display the results
   always @(*) begin
     if (done_capture_displaymemory == 1'b1) begin

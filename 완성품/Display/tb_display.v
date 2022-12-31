@@ -17,9 +17,7 @@ module tb_display;
 
   wire [7:0] display_result_o;
   wire [2:0] state_display_o; // controller의 current_display와 연결
-   
- // reg [7:0] c_tb[0:11]; // not port
-    
+
 	//clock
 	initial
 	begin
@@ -28,12 +26,6 @@ module tb_display;
 		    #10 clk = !clk;
 		end
 	end
-
- //   always @(*) begin
-  //      c = c_tb[c_select_o];
-  //  end
-
-    integer i; 
 
     // initial setting
 	initial 
@@ -57,8 +49,8 @@ module tb_display;
   initial 
 	begin
 		@(posedge clk); 
-      #(`DELTA) // propagation delay
-      reset = 1; // external siganl (external means top input)
+      #(`DELTA)
+      reset = 1; 
         
       @(posedge clk); 
       #(`DELTA) 
