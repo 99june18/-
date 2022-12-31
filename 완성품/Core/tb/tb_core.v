@@ -71,21 +71,21 @@ module tb_core;
         active_send = 0;
 
         @(posedge clk);
-        for (i = 0; i < 37/*done count number+1*/; i = i+1) begin
+        for (i = 0; i < 37; i = i+1) begin
             active_single = 1;
             @(posedge clk);
         end
         active_single = 0;
 
         @(posedge clk);
-        for (i = 0; i < 17/*done count number+1*/; i = i+1) begin
+        for (i = 0; i < 17; i = i+1) begin
             active_sa3 = 1;
             @(posedge clk);
         end
         active_sa3 = 0;
 
         @(posedge clk);
-        for (i = 0; i < 29/*done count number+1*/; i = i+1) begin
+        for (i = 0; i < 29; i = i+1) begin
             active_sa2 = 1;
             @(posedge clk);
         end
