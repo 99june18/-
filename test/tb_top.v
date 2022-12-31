@@ -61,7 +61,7 @@ module tb_top;
         //run = 0;
 
         @(posedge clk); 
-        for (i = 0; i < 98; i = i+1) begin
+        for (i = 0; i < 86; i = i+1) begin
         @(posedge clk);
         end
 
@@ -111,7 +111,6 @@ module tb_top;
         @(posedge clk);
         $display("systolic2_c22 : %d", display_result);
         $display("current state : %d", display_current_state);
-        
 	end
 
 top u_top(
