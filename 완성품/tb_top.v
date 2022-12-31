@@ -39,14 +39,14 @@ module tb_top;
         reset = 0;
         @(posedge clk);
         
-        a11 =     8       ; a12 =      6       ; a13 =    10      ; a14 =     10     ;
-        a21 =      9      ; a22 =     1        ; a23 =      10   ; a24 =     5    ;
-        a31 =      1      ; a32 =       3      ; a33 =     1      ; a34 =    8      ;
-        a41 =       10     ; a42 =      6      ; a43 =      10; a44 =     1    ;
+        a11 = 8;    a12 = 6;    a13 = 10;   a14 = 10;
+        a21 = 9;    a22 = 1;    a23 = 10;   a24 =  5;
+        a31 = 1;    a32 = 3;    a33 =  1;   a34 =  8;
+        a41 = 10;   a42 = 6;    a43 = 10;   a44 =  1;
 
-        b11 =      2     ; b12 =       5      ; b13 =      5     ; 
-        b21 =      5     ; b22 =      3       ; b23 =      5     ; 
-        b31 =       4    ; b32 =       0      ; b33 =      4     ; 
+        b11 = 2;    b12 = 5;    b13 =  5; 
+        b21 = 5;    b22 = 3;    b23 =  5; 
+        b31 = 4;    b32 = 0;    b33 =  4; 
 	end
 
     integer i;
@@ -59,7 +59,7 @@ module tb_top;
 
         @(posedge clk);
 
-        @(posedge clk); 
+        @(posedge clk);
         for (i = 0; i < 87; i = i+1) begin
         @(posedge clk);
         end
@@ -110,7 +110,6 @@ module tb_top;
         @(posedge clk);
         $display("systolic2_c22 : %d", display_result);
         $display("current state : %d", display_current_state);
-        
 	end
 
 top u_top(
