@@ -2,13 +2,13 @@ module pe (clk, rst, pe_in, pe_filter, pe_out, mode_i, activate, pe_in_o);
     input clk;
     input rst;
 
-    input [7:0] pe_in; // pe에 들어오는 input값
-    input [7:0] pe_filter; // pe에 들어오는 filter값
+    input [7:0] pe_in;
+    input [7:0] pe_filter;
     input [1:0] mode_i;
     input activate;
 
     output [7:0] pe_in_o;
-    output [7:0] pe_out; //pe에서의 결과값
+    output [7:0] pe_out;
 
     reg [7:0] pe_n, pe_w;
     reg [7:0] activate_n, activate_w;

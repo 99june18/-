@@ -57,19 +57,20 @@ module tb_core;
         @(posedge clk); 
         rst = 0;
 
+        //input
         @(posedge clk);
-        active_send = 1;
-        a11 = 1; a12 = 2; a13 = 3; a14 = 4;
-        a21 = 1; a22 = 2; a23 = 3; a24 = 4;
-        a31 = 1; a32 = 2; a33 = 3; a34 = 4;
-        a41 = 1; a42 = 2; a43 = 3; a44 = 4;
-
-        b11 = 1; b12 = 1; b13 = 1;
-        b21 = 2; b22 = 2; b23 = 2;
-        b31 = 3; b32 = 3; b33 = 3;
+        a11 = 1;  a12 = 2;  a13 = 3;  a14 = 4;
+        a21 = 5;  a22 = 6;  a23 = 7;  a24 = 8;
+        a31 = 9;  a32 = 10; a33 = 11; a34 = 12;
+        a41 = 13; a42 = 14; a43 = 15; a44 = 16;
+        
+        b11 = 1; b12 = 2; b13 = 3; 
+        b21 = 4; b22 = 5; b23 = 6;
+        b31 = 7; b32 = 8; b33 = 9;
         @(posedge clk);
         active_send = 0;
 
+        //active sinlge
         @(posedge clk);
         for (i = 0; i < 37; i = i+1) begin
             active_single = 1;
@@ -77,6 +78,7 @@ module tb_core;
         end
         active_single = 0;
 
+        //active systolic array 3 by 3
         @(posedge clk);
         for (i = 0; i < 17; i = i+1) begin
             active_sa3 = 1;
@@ -84,13 +86,13 @@ module tb_core;
         end
         active_sa3 = 0;
 
+        //active systolic array 2 by 2
         @(posedge clk);
         for (i = 0; i < 29; i = i+1) begin
             active_sa2 = 1;
             @(posedge clk);
         end
         active_sa2 = 0;
-
     end
 
     core_module u_core_module(

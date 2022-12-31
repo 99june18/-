@@ -4,13 +4,13 @@ module tb_pe;
     reg clk; 
 	reg rst;
 
-    reg [7:0] pe_in; // pe에 들어오는 input값
-    reg [7:0] pe_filter; // pe에 들어오는 filter값
+    reg [7:0] pe_in;
+    reg [7:0] pe_filter;
     reg [1:0] mode_i;
     reg activate;
 
     wire [7:0] pe_in_o;
-    wire [7:0] pe_out; //pe에서의 결과값
+    wire [7:0] pe_out;
 
     initial
 	begin
@@ -34,8 +34,8 @@ module tb_pe;
 
     initial 
 	begin
-		@(posedge clk);  // propagation delay
-        rst = 1; // external siganl (external means top input)
+		@(posedge clk);
+        rst = 1;
         
         @(posedge clk); 
         rst = 0;
@@ -44,6 +44,7 @@ module tb_pe;
         activate = 1; 
         @(posedge clk);
 
+        //mode single
         @(posedge clk);
         mode_i = 0;
         pe_in = 8'd1;
@@ -76,6 +77,7 @@ module tb_pe;
         pe_in = 8'd10;
         pe_filter = 8'd11;
 
+        //mode save
         @(posedge clk);
         mode_i = 2'd1;
         pe_filter = 8'd2;
@@ -84,6 +86,7 @@ module tb_pe;
         @(posedge clk);
         pe_filter = 8'd4;
 
+        //mode sa computation
         @(posedge clk);
         mode_i = 2'd2;
         pe_filter = 8'd1;
@@ -116,6 +119,5 @@ module tb_pe;
         .activate  ( activate  ),
         .pe_in_o   (   )
     );
-
 
 endmodule
