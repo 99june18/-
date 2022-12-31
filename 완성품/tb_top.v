@@ -18,7 +18,6 @@ module tb_top;
   wire [7:0] display_result;
   wire [2:0] display_current_state;
 	
-	//clock
 	initial
 	begin
 	    forever
@@ -27,7 +26,6 @@ module tb_top;
 		end
 	end
 
-    // initial setting
 	initial 
 	begin
 		clk = 0;
