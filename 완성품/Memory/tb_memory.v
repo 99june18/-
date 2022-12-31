@@ -1,5 +1,4 @@
 `timescale 1ns/1ns
-`define DELTA 2
 
 module tb_memory;
 	reg clk; 
@@ -82,15 +81,12 @@ module tb_memory;
     initial 
 	begin
 		@(posedge clk); 
-        #(`DELTA)
         reset = 1;
         
         @(posedge clk); 
-        #(`DELTA) 
         reset = 0;
 
-        @(posedge clk); 
-        #(`DELTA) 
+        @(posedge clk);  
         a11 = 8'd1;  a12 = 8'd2;  a13 = 8'd3;  a14 = 8'd4;
         a21 = 8'd5;  a22 = 8'd6;  a23 = 8'd7;  a24 = 8'd8;
         a31 = 8'd9;  a32 = 8'd10; a33 = 8'd11; a34 = 8'd12;
@@ -155,86 +151,85 @@ module tb_memory;
         @(posedge clk); 
         @(posedge clk);
         @(posedge clk);
-        @(posedge clk);
-        #(`DELTA) 
+        @(posedge clk); 
         reset = 1;
 	end
 
-memory memory0(
-    .clk                     ( clk                     ),
-    .reset                     ( reset                     ),
-    .run_valid_i            ( run_valid_i            ),
-    .a11                     ( a11                     ),
-    .a12                     ( a12                     ),
-    .a13                     ( a13                     ),
-    .a14                     ( a14                     ),
-    .a21                     ( a21                     ),
-    .a22                     ( a22                     ),
-    .a23                     ( a23                     ),
-    .a24                     ( a24                     ),
-    .a31                     ( a31                     ),
-    .a32                     ( a32                     ),
-    .a33                     ( a33                     ),
-    .a34                     ( a34                     ),
-    .a41                     ( a41                     ),
-    .a42                     ( a42                     ),
-    .a43                     ( a43                     ),
-    .a44                     ( a44                     ),
-    .b11                     ( b11                     ),
-    .b12                     ( b12                     ),
-    .b13                     ( b13                     ),
-    .b21                     ( b21                     ),
-    .b22                     ( b22                     ),
-    .b23                     ( b23                     ),
-    .b31                     ( b31                     ),
-    .b32                     ( b32                     ),
-    .b33                     ( b33                     ),
-    .a11_o                     ( a11_o                     ),
-    .a12_o                     ( a12_o                     ),
-    .a13_o                     ( a13_o                     ),
-    .a14_o                     ( a14_o                     ),
-    .a21_o                     ( a21_o                     ),
-    .a22_o                     ( a22_o                     ),
-    .a23_o                     ( a23_o                     ),
-    .a24_o                     ( a24_o                     ),
-    .a31_o                     ( a31_o                     ),
-    .a32_o                     ( a32_o                     ),
-    .a33_o                     ( a33_o                     ),
-    .a34_o                     ( a34_o                     ),
-    .a41_o                     ( a41_o                     ),
-    .a42_o                     ( a42_o                     ),
-    .a43_o                     ( a43_o                     ),
-    .a44_o                     ( a44_o                     ),
-    .b11_o                     ( b11_o                     ),
-    .b12_o                     ( b12_o                     ),
-    .b13_o                     ( b13_o                     ),
-    .b21_o                     ( b21_o                     ),
-    .b22_o                     ( b22_o                     ),
-    .b23_o                     ( b23_o                     ),
-    .b31_o                     ( b31_o                     ),
-    .b32_o                     ( b32_o                     ),
-    .b33_o                     ( b33_o                     ),
-    .PE_valid_i          ( PE_valid_i          ),
-    .SA_3x3_valid_i            ( SA_3x3_valid_i            ),
-    .SA_2x2_valid_i            ( SA_2x2_valid_i            ),
-    .c11                     ( c11                     ),
-    .c12                     ( c12                     ),
-    .c21                     ( c21                     ),
-    .c22                     ( c22                     ),
-    .c11_PE                     ( c11_PE                     ),
-    .c12_PE                     ( c12_PE                     ),
-    .c21_PE                     ( c21_PE                     ),
-    .c22_PE                     ( c22_PE                     ),
-    .c11_3x3                     ( c11_3x3                     ),
-    .c12_3x3                     ( c12_3x3                     ),
-    .c21_3x3                     ( c21_3x3                     ),
-    .c22_3x3                     ( c22_3x3                     ),
-    .c11_2x2                     ( c11_2x2                     ),
-    .c12_2x2                     ( c12_2x2                     ),
-    .c21_2x2                     ( c21_2x2                     ),
-    .c22_2x2                     ( c22_2x2                     ),
-    .done_capture        ( done_capture        )
-);
+  memory memory0(
+      .clk                     ( clk                     ),
+      .reset                     ( reset                     ),
+      .run_valid_i            ( run_valid_i            ),
+      .a11                     ( a11                     ),
+      .a12                     ( a12                     ),
+      .a13                     ( a13                     ),
+      .a14                     ( a14                     ),
+      .a21                     ( a21                     ),
+      .a22                     ( a22                     ),
+      .a23                     ( a23                     ),
+      .a24                     ( a24                     ),
+      .a31                     ( a31                     ),
+      .a32                     ( a32                     ),
+      .a33                     ( a33                     ),
+      .a34                     ( a34                     ),
+      .a41                     ( a41                     ),
+      .a42                     ( a42                     ),
+      .a43                     ( a43                     ),
+      .a44                     ( a44                     ),
+      .b11                     ( b11                     ),
+      .b12                     ( b12                     ),
+      .b13                     ( b13                     ),
+      .b21                     ( b21                     ),
+      .b22                     ( b22                     ),
+      .b23                     ( b23                     ),
+      .b31                     ( b31                     ),
+      .b32                     ( b32                     ),
+      .b33                     ( b33                     ),
+      .a11_o                     ( a11_o                     ),
+      .a12_o                     ( a12_o                     ),
+      .a13_o                     ( a13_o                     ),
+      .a14_o                     ( a14_o                     ),
+      .a21_o                     ( a21_o                     ),
+      .a22_o                     ( a22_o                     ),
+      .a23_o                     ( a23_o                     ),
+      .a24_o                     ( a24_o                     ),
+      .a31_o                     ( a31_o                     ),
+      .a32_o                     ( a32_o                     ),
+      .a33_o                     ( a33_o                     ),
+      .a34_o                     ( a34_o                     ),
+      .a41_o                     ( a41_o                     ),
+      .a42_o                     ( a42_o                     ),
+      .a43_o                     ( a43_o                     ),
+      .a44_o                     ( a44_o                     ),
+      .b11_o                     ( b11_o                     ),
+      .b12_o                     ( b12_o                     ),
+      .b13_o                     ( b13_o                     ),
+      .b21_o                     ( b21_o                     ),
+      .b22_o                     ( b22_o                     ),
+      .b23_o                     ( b23_o                     ),
+      .b31_o                     ( b31_o                     ),
+      .b32_o                     ( b32_o                     ),
+      .b33_o                     ( b33_o                     ),
+      .PE_valid_i          ( PE_valid_i          ),
+      .SA_3x3_valid_i            ( SA_3x3_valid_i            ),
+      .SA_2x2_valid_i            ( SA_2x2_valid_i            ),
+      .c11                     ( c11                     ),
+      .c12                     ( c12                     ),
+      .c21                     ( c21                     ),
+      .c22                     ( c22                     ),
+      .c11_PE                     ( c11_PE                     ),
+      .c12_PE                     ( c12_PE                     ),
+      .c21_PE                     ( c21_PE                     ),
+      .c22_PE                     ( c22_PE                     ),
+      .c11_3x3                     ( c11_3x3                     ),
+      .c12_3x3                     ( c12_3x3                     ),
+      .c21_3x3                     ( c21_3x3                     ),
+      .c22_3x3                     ( c22_3x3                     ),
+      .c11_2x2                     ( c11_2x2                     ),
+      .c12_2x2                     ( c12_2x2                     ),
+      .c21_2x2                     ( c21_2x2                     ),
+      .c22_2x2                     ( c22_2x2                     ),
+      .done_capture        ( done_capture        )
+  );
 
 
 endmodule

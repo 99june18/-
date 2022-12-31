@@ -1,5 +1,4 @@
 `timescale 1ns/1ns
-`define DELTA 2
 
 module tb_controller;
 	reg clk; 
@@ -47,20 +46,16 @@ module tb_controller;
   initial 
 	begin
 		@(posedge clk); 
-    #(`DELTA)
     reset = 1;
         
-    @(posedge clk); 
-    #(`DELTA) 
+    @(posedge clk);  
     reset = 0;
 
     @(posedge clk); 
-    #(`DELTA) 
     run = 1;
 
     @(posedge clk);
     done_capture = 1;
-    #(`DELTA) 
     run = 0;
 
     @(posedge clk);
@@ -118,7 +113,6 @@ module tb_controller;
 
         @(posedge clk); 
         @(posedge clk);
-        #(`DELTA) 
         reset = 1;
 	end
 

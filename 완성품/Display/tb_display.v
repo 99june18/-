@@ -1,5 +1,4 @@
 `timescale 1ns/1ns
-`define DELTA 2
 
 module tb_display;
 
@@ -49,14 +48,11 @@ module tb_display;
   initial 
 	begin
 		@(posedge clk); 
-      #(`DELTA)
       reset = 1; 
         
-      @(posedge clk); 
-      #(`DELTA) 
+      @(posedge clk);  
       reset = 0;
       @(posedge clk); 
-      #(`DELTA) 
       run_display = 1;
       c11_PE = 8'd1; 
       c12_PE = 8'd2;
